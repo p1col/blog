@@ -4,7 +4,6 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'P-O',
   description: 'Javascript / Vue / Python / Algorithm / Node',
-  base: '/blog/',
   cleanUrls: true,
   srcDir: 'src',
   outDir: 'dist',
