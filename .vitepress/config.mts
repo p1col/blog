@@ -6,6 +6,7 @@ export default defineConfig({
   description: 'Javascript / Vue / Python / Algorithm / Node',
   lastUpdated: true,
   cleanUrls: true,
+  base: '/blog/',
   srcDir: 'src',
   outDir: 'dist',
   assetsDir: 'static',
