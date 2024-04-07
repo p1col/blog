@@ -18,8 +18,8 @@ export default defineConfig({
     logo: '/logo.jpg',
 
     nav: [
-      { text: 'Home', link: './' },
-      { text: '前端', link: './frontend/guide' },
+      { text: 'Home', link: '/' },
+      { text: '前端', link: '/frontend/guide' },
     ],
 
     sidebar: [
