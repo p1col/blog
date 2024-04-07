@@ -1,10 +1,10 @@
 # 指引
 
-## vitepress
+## VitePress
 
 ### 配置文件
 
-vitepress 的配置文件默认放在项目根目录下：`.vitepress/config.[mts|mjs|js|ts]`
+VitePress 的配置文件默认放在项目根目录下：`.vitepress/config.[mts|mjs|js|ts]`
 
 ### 图片显示不出来
 

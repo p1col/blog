@@ -165,56 +165,56 @@ scanCode 相关错误码：
 3. 修改 `.env` 中的 App ID 和 App Secret 为自己的应用信息
 4. 打开终端，测试包的路径为 `web_app_with_jssdk/python`，可选择进入目录或者直接删除外层目录进行操作
 
-   ```commandline
-   <!-- 进入目录 -->
+   ```sh
+   # 进入目录
    cd web_app_with_jssdk/python
    ```
 
 5. 确保当前执行目录与`server.py`同级，创建并激活虚拟环境
    :::code-group
 
-   ```commandline [windows]
-   <!-- 创建虚拟环境，只需执行一次 -->
-   <!-- python -m venv [虚拟环境名] -->
+   ```sh [windows]
+   # 创建虚拟环境，只需执行一次
+   # python -m venv [虚拟环境名]
    python -m venv venv
    
-   <!-- 激活环境 -->
+   # 激活环境
    venv\Scripts\activate
    ```
 
-   ```commandline [mac/linux]
-   <!-- 创建虚拟环境，只需执行一次 -->
-   <!-- python -m venv [虚拟环境名] -->
+   ```sh [mac/linux]
+   # 创建虚拟环境，只需执行一次
+   # python -m venv [虚拟环境名]
    python -m venv venv
    
-   <!-- 激活环境 -->
+   # 激活环境
    . venv/bin/activate
    ```
 
    :::
    激活后，终端会显示虚拟环境的名称
 
-   ```commandline
+   ```sh
    (venv) **** python %
    ```
 
 6. 安装依赖
 
-   ```commandline
+   ```sh
    pip install -r requirements.txt
    ```
 
 7. 启动服务器
 
-   ```commandline
+   ```sh
    python3 server.py
    ```
 
 8. 复制终端中的临时内网访问地址用于后续配置
 
-   ```commandline{3}
+   ```sh{3}
    Running On http://127.0.0.1:[port]
-   <!-- 临时内网访问地址 --> // [!code focus:2]
+   # 临时内网访问地址
    Running On http://[ip]:[port] (Press CTRL+C to quit)
    ```
 
@@ -224,3 +224,72 @@ scanCode 相关错误码：
 2. 在菜单 `应用功能-网页` 中将临时内网访问地址填入 `桌面端主页` 和 `移动端主页` 字段（按需填写）
 3. 在菜单 `安全设置` 中将临时内网访问地址填入 `H5 可信域名` 字段，点击添加
 4. 创建版本并发布
+
+## 动态引入 SDK 方案
+
+```js{9-11}
+export const loadScript = (url, callback = () => {}) => {
+  if (!url) {
+    return;
+  }
+  const sdkScript = document.createElement('script');
+  sdkScript.type = 'text/javascript';
+  sdkScript.src = url;
+
+  sdkScript.onload = function () {
+    callback();
+  };
+  sdkScript.onerror = function () {
+    console.log('onerror');
+  };
+
+  document.getElementsByTagName('head')[0]?.appendChild(sdkScript);
+};
+```
+
+```js{8-22}
+// 官方不推荐使用 UA 进行环境判断
+const ua = window.navigator.userAgent.toLowerCase();
+const isFeiShu = ua.indexOf('feishu') > -1;
+let isLoaded = false;
+
+function apiAuth() {
+  return new Promise((resolve, reject) => {
+    if (!window.h5sdk && isFeiShu && !isLoaded) { // [!code focus:15]
+      isLoaded = true;
+      const sdkUrl = 'https://lf1-cdn-tos.bytegoofy.com/goofy/ee/lark/h5jssdk/lark/js_sdk/h5-js-sdk-1.5.11.js';
+      loadScript(sdkUrl, async () => {
+        console.info('飞书 SDK 加载完成');
+        try {
+          const res = await apiAuth();
+          console.info('飞书 SDK 加载完成后的结果', res);
+          res && resolve(res);
+        } catch (error) {
+          reject(error);
+        }
+      });
+      return
+    }
+
+    console.log('start apiAuth');
+    if (!window.h5sdk) {
+      console.log('找不到 h5sdk');
+      alert('请在飞书中打开');
+      return;
+    }
+    window.h5sdk.config(() => {})
+    window.h5sdk.ready(() => {
+      tt.scanCode({
+        success(res) {
+          console.log('扫码结果', JSON.stringify(res));
+          resolve({ result: res.result });
+        },
+        fail(err) {
+          console.log(`扫码失败: ${JSON.stringify(err)}`);
+          reject(JSON.stringify(err));
+        }
+      })
+    })
+  })
+}
+```
