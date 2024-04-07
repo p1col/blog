@@ -166,7 +166,7 @@ scanCode 相关错误码：
 3. 修改`.env`中的 App ID 和 App Secret 为自己的应用信息
 4. 打开终端，测试包的路径为`web_app_with_jssdk/python`，可选择进入目录或者直接删除外层目录进行操作
 
-   ```bash
+   ```commandline
    <!-- 进入目录 -->
    cd web_app_with_jssdk/python
    ```
@@ -174,7 +174,7 @@ scanCode 相关错误码：
 5. 确保当前执行目录与`server.py`同级，创建并激活虚拟环境
    :::code-group
 
-   ```bash [windows]
+   ```commandline [windows]
    <!-- 创建虚拟环境，只需执行一次 -->
    <!-- python -m venv [虚拟环境名] -->
    python -m venv venv
@@ -183,7 +183,7 @@ scanCode 相关错误码：
    venv\Scripts\activate
    ```
 
-   ```bash [mac/linux]
+   ```commandline [mac/linux]
    <!-- 创建虚拟环境，只需执行一次 -->
    <!-- python -m venv [虚拟环境名] -->
    python -m venv venv
@@ -195,27 +195,27 @@ scanCode 相关错误码：
    :::
    激活后，终端会显示虚拟环境的名称
 
-   ```bash
+   ```commandline
    (venv) **** python %
    ```
 
 6. 安装依赖
 
-   ```bash
+   ```commandline
    pip install -r requirements.txt
    ```
 
 7. 启动服务器
 
-   ```bash
+   ```commandline
    python3 server.py
    ```
 
 8. 复制终端中的临时内网访问地址用于后续配置
 
-   ```bash{3}
+   ```commandline{3}
    Running On http://127.0.0.1:[port]
-   <!-- 临时内网访问地址 -->
+   <!-- 临时内网访问地址 --> // [!code focus:2]
    Running On http://[ip]:[port] (Press CTRL+C to quit)
    ```
 
