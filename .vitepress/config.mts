@@ -6,49 +6,50 @@ export default defineConfig({
   description: 'Javascript / Vue / Python / Algorithm / Node',
   lastUpdated: true,
   cleanUrls: true,
-  base: '.',
+  base: '/',
   srcDir: 'src',
   outDir: 'dist',
-  assetsDir: 'static',
   markdown: {
     lineNumbers: true,
   },
+  head: [['link', { rel: 'icon', type: 'image/jpeg', href: '/logo.jpg' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: '/logo.jpg',
-
+    logo: { src: '/logo.jpg', width: 24, height: 24 },
     nav: [
       { text: 'Home', link: '/' },
-      { text: '前端', link: '/frontend/guide' },
+      { text: '前端', link: '/frontend/' },
     ],
 
-    sidebar: [
-      {
-        text: '前端',
-        collapsed: false,
-        items: [
-          { text: 'guide', link: '/frontend/guide' },
-          {
-            text: 'H5 接入平台扫一扫功能',
-            collapsed: true,
-            items: [
-              {
-                text: '飞书',
-                link: '/frontend/scan-api/feishu.md',
-              },
-              {
-                text: '钉钉',
-                link: '/frontend/scan-api/dingtalk.md',
-              },
-              {
-                text: '企业微信',
-                link: '/frontend/scan-api/wxwork.md',
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    sidebar: {
+      '/frontend/': [
+        {
+          text: '前端',
+          collapsed: false,
+          link: '/frontend/',
+          items: [
+            {
+              text: 'H5 接入平台扫一扫',
+              collapsed: true,
+              items: [
+                {
+                  text: '飞书',
+                  link: '/frontend/scan-api/feishu',
+                },
+                {
+                  text: '钉钉',
+                  link: '/frontend/scan-api/dingtalk',
+                },
+                {
+                  text: '企业微信',
+                  link: '/frontend/scan-api/wxwork',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/p1col/blog' }],
 

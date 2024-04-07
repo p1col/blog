@@ -12,6 +12,6 @@ hero:
   actions:
     - theme: brand
       text: 翻页 -->
-      link: /javascript/目录指引
+      link: /guide
 ---
 
