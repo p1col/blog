@@ -6,7 +6,7 @@ export default defineConfig({
   description: 'Javascript / Vue / Python / Algorithm / Node',
   lastUpdated: true,
   cleanUrls: true,
-  base: '/blog/',
+  base: '.',
   srcDir: 'src',
   outDir: 'dist',
   assetsDir: 'static',
@@ -18,8 +18,8 @@ export default defineConfig({
     logo: '/logo.jpg',
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: '前端', link: '/frontend/guide' },
+      { text: 'Home', link: './' },
+      { text: '前端', link: './frontend/guide' },
     ],
 
     sidebar: [
