@@ -15,6 +15,11 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: { src: '/logo.jpg', width: 24, height: 24 },
+
+    search: {
+      provider: 'local',
+    },
+
     nav: [
       { text: 'Home', link: '/' },
       { text: '前端', link: '/frontend/' },
