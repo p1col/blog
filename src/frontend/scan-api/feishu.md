@@ -6,7 +6,6 @@
 
 ### 引入 SDK
 
-
 ```html
 <!-- index.html -->
 <head>
@@ -154,17 +153,17 @@ scanCode 相关错误码：
 ### 替换代码
 
 1. 下载官方提供的示例代码包[web_app_with_jssdk.zip](https://open.feishu.cn/document/client-docs/h5/)（仅提供文档链接，请从文档中下载最新包）
-2. 构建项目生产包，以 Vue 3 项目为例，默认输入目录为`./dist`
-3. 将`./dist/index.html`放入`./templates`目录
-4. 将`./dist/assets/*`放入`./public`目录
-5. 修改`index.html`中文件的引用路径，将`./assets/`替换为`../public/`
+2. 构建项目生产包，以 Vue 3 项目为例，默认输入目录为 `./dist`
+3. 将 `./dist/index.html` 放入 `./templates` 目录
+4. 将 `./dist/assets/*` 放入 `./public` 目录
+5. 修改 `index.html` 中文件的引用路径，将 `./assets/` 替换为 `../public/`
 
 ### 启动（Python 3）
 
 1. 安装[Python 3](https://www.python.org/)
 2. 在[飞书开发者后台](https://open.feishu.cn/app/)创建应用，点击应用名称进入详情，点击**凭证与基础信息**，获取 App ID 和 App Secret
-3. 修改`.env`中的 App ID 和 App Secret 为自己的应用信息
-4. 打开终端，测试包的路径为`web_app_with_jssdk/python`，可选择进入目录或者直接删除外层目录进行操作
+3. 修改 `.env` 中的 App ID 和 App Secret 为自己的应用信息
+4. 打开终端，测试包的路径为 `web_app_with_jssdk/python`，可选择进入目录或者直接删除外层目录进行操作
 
    ```commandline
    <!-- 进入目录 -->
@@ -222,6 +221,6 @@ scanCode 相关错误码：
 ### 配置本地调试地址
 
 1. 进入飞书开发者后台，进入应用信息页
-2. 在菜单`应用功能-网页`中将临时内网访问地址填入`桌面端主页`和`移动端主页`字段（按需填写）
-3. 在菜单`安全设置`中将临时内网访问地址填入`H5 可信域名`字段，点击添加
+2. 在菜单 `应用功能-网页` 中将临时内网访问地址填入 `桌面端主页` 和 `移动端主页` 字段（按需填写）
+3. 在菜单 `安全设置` 中将临时内网访问地址填入 `H5 可信域名` 字段，点击添加
 4. 创建版本并发布
