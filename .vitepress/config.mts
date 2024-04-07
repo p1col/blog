@@ -4,7 +4,6 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'P-O',
   description: 'Javascript / Vue / Python / Algorithm / Node',
-  lastUpdated: true,
   cleanUrls: true,
   base: '/',
   srcDir: 'src',
@@ -55,6 +54,10 @@ export default defineConfig({
 
     outline: {
       level: [2, 4],
+    },
+
+    lastUpdated: {
+      text: '最近更新时间',
     },
   },
 });
