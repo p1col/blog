@@ -7,7 +7,7 @@ hero:
   text: 从零开始的小号生活
   tagline: Vue / Javascript / Node / Python
   image: 
-    src: /logo.jpg
+    src: ./logo.jpg
     alt: P-O
   actions:
     - theme: brand

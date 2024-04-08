@@ -1,20 +1,19 @@
 import { defineConfig } from 'vitepress';
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'P-O',
   description: 'Javascript / Vue / Python / Algorithm / Node',
   cleanUrls: true,
-  base: '/',
+  base: '/blog/',
   srcDir: 'src',
-  outDir: 'dist',
+  outDir: 'blog',
   markdown: {
     lineNumbers: true,
   },
-  head: [['link', { rel: 'icon', type: 'image/jpeg', href: '/logo.jpg' }]],
+  head: [['link', { rel: 'icon', type: 'image/jpeg', href: './logo.jpg' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: { src: '/logo.jpg', width: 24, height: 24 },
+    logo: { src: './logo.jpg', width: 24, height: 24 },
 
     search: {
       provider: 'local',
