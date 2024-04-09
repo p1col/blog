@@ -207,7 +207,7 @@ scanCode 相关错误码：
 7. 启动服务器
 
    ```sh
-   python3 server.py
+   python server.py
    ```
 
 8. 复制终端中的临时内网访问地址用于后续配置
